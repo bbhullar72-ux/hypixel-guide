@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hypixel Ultimate Guide</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+color:white;
+background:radial-gradient(circle,#020617,#000);
+}
+
+/* BACKGROUND */
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+/* HEADER */
+header{
+text-align:center;
+padding:20px;
+font-size:30px;
+color:#38bdf8;
+text-shadow:0 0 15px #38bdf8;
+}
+
+/* NAV */
+nav{text-align:center;}
+nav button{
+margin:5px;
+padding:10px;
+background:#1e293b;
+color:white;
+border:none;
+cursor:pointer;
+border-radius:8px;
+}
+nav button:hover{
+background:#38bdf8;
+color:black;
+}
+
+/* SEARCH */
+.search{text-align:center;margin:10px;}
+.search input{
+padding:10px;
+width:60%;
+border-radius:10px;
+border:none;
+}
+
+/* SECTION */
+.section{display:none;padding:15px;}
+.active{display:block;}
+
+/* CARD */
+.card{
+display:inline-block;
+background:rgba(30,41,59,0.7);
+margin:10px;
+padding:15px;
+border-radius:15px;
+width:200px;
+text-align:center;
+cursor:pointer;
+transition:0.3s;
+}
+.card:hover{
+transform:scale(1.08);
+box-shadow:0 0 20px #38bdf8;
+}
+
+/* POPUP */
+.popup{
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:#020617;
+padding:20px;
+border-radius:15px;
+box-shadow:0 0 25px #38bdf8;
+}
+
+/* BUTTON */
+.btn{
+padding:8px;
+margin-top:10px;
+cursor:pointer;
+}
+</style>
+
+<script>
+function show(id){
+let s=document.getElementsByClassName("section");
+for(let i=0;i<s.length;i++) s[i].classList.remove("active");
+document.getElementById(id).classList.add("active");
+}
+
+function openPop(title,info){
+document.getElementById("pop").style.display="block";
+document.getElementById("ptitle").innerText=title;
+document.getElementById("pinfo").innerText=info;
+new Audio("https://www.soundjay.com/buttons/button-3.mp3").play();
+}
+
+function closePop(){
+document.getElementById("pop").style.display="none";
+}
+
+function search(){
+let val=document.getElementById("search").value.toLowerCase();
+let cards=document.getElementsByClassName("card");
+
+for(let i=0;i<cards.length;i++){
+let txt=cards[i].innerText.toLowerCase();
+cards[i].style.display=txt.includes(val)?"inline-block":"none";
+}
+}
+
+/* PARTICLES */
+window.onload=function(){
+let c=document.getElementById("bg");
+let ctx=c.getContext("2d");
+c.width=window.innerWidth;
+c.height=window.innerHeight;
+
+let p=[];
+for(let i=0;i<80;i++){
+p.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2});
+}
+
+function draw(){
+ctx.clearRect(0,0,c.width,c.height);
+p.forEach(dot=>{
+ctx.beginPath();
+ctx.arc(dot.x,dot.y,dot.r,0,2*Math.PI);
+ctx.fillStyle="#38bdf8";
+ctx.fill();
+dot.y+=0.5;
+if(dot.y>c.height) dot.y=0;
+});
+requestAnimationFrame(draw);
+}
+draw();
+}
+</script>
+
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>💀 HYPIXEL ULTIMATE GUIDE 💀</header>
+
+<nav>
+<button onclick="show('home')">Home</button>
+<button onclick="show('swords')">Swords</button>
+<button onclick="show('minions')">Minions</button>
+<button onclick="show('dungeons')">Dungeons</button>
+</nav>
+
+<div class="search">
+<input id="search" onkeyup="search()" placeholder="Search anything... 🔍">
+</div>
+
+<!-- HOME -->
+<div id="home" class="section active">
+
+<h2>🔥 Full Hypixel Overview 🔥</h2>
+
+<h3>⚔️ Swords (Beginner → Endgame)</h3>
+<ul>
+<li>Rogue Sword → Beginner speed</li>
+<li>AOTE → Teleport ability</li>
+<li>AOTD → Mid game power</li>
+<li>Livid Dagger → High crit</li>
+<li>Shadow Fury → Berserk</li>
+<li>Hyperion 🔥 → Endgame best</li>
+</ul>
+
+<h3>⛏️ Minions (Early → Late Game)</h3>
+<ul>
+<li>Cobblestone → Starter</li>
+<li>Coal → Early fuel</li>
+<li>Iron → Early coins</li>
+<li>Gold → Mid value</li>
+<li>Redstone → Upgrades</li>
+<li>Diamond → High value</li>
+<li>Blaze 🔥 → Best late game</li>
+</ul>
+
+<h3>🏰 Dungeons (F1 → F7)</h3>
+<ul>
+<li>F1 → Bonzo (Easy)</li>
+<li>F2 → Scarf (Easy)</li>
+<li>F3 → Professor</li>
+<li>F4 → Thorn</li>
+<li>F5 → Livid</li>
+<li>F6 → Sadan</li>
+<li>F7 → Necron 🔥</li>
+</ul>
+
+<br>
+<a href="https://youtube.com/@gurvirgameryt8193?si=SHpYLExMlj7A-Jgm" target="_blank" style="color:red;">
+Subscribe 🔥
+</a>
+
+</div>
+
+<!-- SWORDS -->
+<div id="swords" class="section">
+<div class="card" onclick="openPop('Rogue Sword','Damage:20 | Speed')">Rogue Sword</div>
+<div class="card" onclick="openPop('AOTE','Damage:100 | Teleport')">AOTE</div>
+<div class="card" onclick="openPop('AOTD','Damage:225')">AOTD</div>
+<div class="card" onclick="openPop('Livid Dagger','Damage:1500')">Livid</div>
+<div class="card" onclick="openPop('Shadow Fury','Damage:2000')">Shadow Fury</div>
+<div class="card" onclick="openPop('Hyperion','Damage:10000')">Hyperion 🔥</div>
+</div>
+
+<!-- MINIONS -->
+<div id="minions" class="section">
+<div class="card" onclick="openPop('Cobblestone','100 coins/hr')">Cobble</div>
+<div class="card" onclick="openPop('Coal','120 coins/hr')">Coal</div>
+<div class="card" onclick="openPop('Iron','150 coins/hr')">Iron</div>
+<div class="card" onclick="openPop('Gold','200 coins/hr')">Gold</div>
+<div class="card" onclick="openPop('Diamond','300 coins/hr')">Diamond</div>
+<div class="card" onclick="openPop('Redstone','250 coins/hr')">Redstone</div>
+<div class="card" onclick="openPop('Blaze','500 coins/hr')">Blaze 🔥</div>
+</div>
+
+<!-- DUNGEONS -->
+<div id="dungeons" class="section">
+<div class="card" onclick="openPop('F1','Bonzo')">F1</div>
+<div class="card" onclick="openPop('F2','Scarf')">F2</div>
+<div class="card" onclick="openPop('F3','Professor')">F3</div>
+<div class="card" onclick="openPop('F4','Thorn')">F4</div>
+<div class="card" onclick="openPop('F5','Livid')">F5</div>
+<div class="card" onclick="openPop('F6','Sadan')">F6</div>
+<div class="card" onclick="openPop('F7','Necron 🔥')">F7</div>
+</div>
+
+<!-- POPUP -->
+<div id="pop" class="popup">
+<h2 id="ptitle"></h2>
+<p id="pinfo"></p>
+<button onclick="closePop()" class="btn">Close</button>
+</div>
+
+</body>
+</html>
